@@ -23,7 +23,6 @@ fs.readFile(nombreArchivo,
             SegundoEjercicio(obj);
             TercerEjercicio(obj);
             CuartoEjercicio(obj);*/
-            PrimerEjercicio(obj);
             QuintoEjercicio(obj);
             /*SextoEjercicio(obj);
             SeptimoEjercicio(obj);
@@ -72,6 +71,9 @@ function QuintoEjercicio(obj){
     });
     console.log(datos["male"]);
     console.log(datos["female"]);
+    console.log(datos["n/a"]);
+    console.log(datos["hermaphrodite"]);
+    console.log(datos["none"]);
     /*const male= obj.filter(persona =>persona.gender === "male").map(persona=>persona.name);
     const female= obj.filter(persona =>persona.gender === "female").map(persona=>persona.name);
     const hermaphrodite= obj.filter(persona =>persona.gender === "hermaphrodite").map(persona=>persona.name);
