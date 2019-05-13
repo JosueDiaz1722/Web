@@ -19,29 +19,23 @@ fs.readFile(nombreArchivo,
             console.log();
              */
             obj=require('./people.json');
-            /*PrimerEjercicio(obj);
+            PrimerEjercicio(obj);
             SegundoEjercicio(obj);
             TercerEjercicio(obj);
-            CuartoEjercicio(obj);*/
+            CuartoEjercicio(obj);
             QuintoEjercicio(obj);
-            /*SextoEjercicio(obj);
+            SextoEjercicio(obj);
             SeptimoEjercicio(obj);
             OctavoEjercicio(obj);
             NovenoEjercicio(obj);
             DecimoEjercicio(obj);
-            */
+
         }
     });
 
 function PrimerEjercicio(obj) {
     console.log("Los generos son: ");
     console.log(obj.map(persona=>persona.gender).filter((value,index,self)=>self.indexOf(value) === index));
-    console.log("Los tipos de color de ojos son: ");
-    console.log(obj.map(persona=>persona.eye_color).filter((value,index,self)=>self.indexOf(value) === index));
-    console.log("Los tipos de color de piel son: ");
-    console.log(obj.map(persona=>persona.skin_color).filter((value,index,self)=>self.indexOf(value) === index));
-    console.log("Los tipos de color de cabello son: ");
-    console.log(obj.map(persona=>persona.hair_color).filter((value,index,self)=>self.indexOf(value) === index));
 }
 function SegundoEjercicio(obj) {
     console.log("Los tipos de color de ojos son: ");
@@ -58,26 +52,57 @@ function CuartoEjercicio(obj) {
 
 function QuintoEjercicio(obj){
     var tipogenero = obj.map(persona=>persona.gender).filter((value,index,self)=>self.indexOf(value) === index);
-    var datos ={};
+    var datosgenero ={};
     Object.keys(tipogenero).forEach(function (key) {
         var i=0;
-        datos[tipogenero[key]] =[];
+        datosgenero[tipogenero[key]] =[];
         const valor= obj.map(persona=>{
             if(persona.gender=== tipogenero[key]){
-                datos[tipogenero[key]].push(persona.name);
+                datosgenero[tipogenero[key]].push(persona.name);
                i++;
             }
         });
     });
-    console.log(datos["male"]);
-    console.log(datos["female"]);
-    console.log(datos["n/a"]);
-    console.log(datos["hermaphrodite"]);
-    console.log(datos["none"]);
-    /*const male= obj.filter(persona =>persona.gender === "male").map(persona=>persona.name);
-    const female= obj.filter(persona =>persona.gender === "female").map(persona=>persona.name);
-    const hermaphrodite= obj.filter(persona =>persona.gender === "hermaphrodite").map(persona=>persona.name);
-    const none= obj.filter(persona =>persona.gender === "none").map(persona=>persona.name);*/
+    console.log(datosgenero)
+    var tipoOjos= obj.map(persona=>persona.eye_color).filter((value,index,self)=>self.indexOf(value) === index);
+    var datosojos ={};
+    Object.keys(tipoOjos).forEach(function (key) {
+        var i=0;
+        datosojos[tipoOjos[key]] =[];
+        const valor= obj.map(persona=>{
+            if(persona.eye_color=== tipoOjos[key]){
+                datosojos[tipoOjos[key]].push(persona.name);
+                i++;
+            }
+        });
+    });
+    console.log(datosojos)
+    var tipoPiel= obj.map(persona=>persona.skin_color).filter((value,index,self)=>self.indexOf(value) === index);
+    var datosPiel ={};
+    Object.keys(tipoPiel).forEach(function (key) {
+        var i=0;
+        datosPiel[tipoPiel[key]] =[];
+        const valor= obj.map(persona=>{
+            if(persona.skin_color=== tipoPiel[key]){
+                datosPiel[tipoPiel[key]].push(persona.name);
+                i++;
+            }
+        });
+    });
+    console.log(tipoPiel)
+    var tipoCabello= obj.map(persona=>persona.hair_color).filter((value,index,self)=>self.indexOf(value) === index);
+    var datosCabello ={};
+    Object.keys(tipoCabello).forEach(function (key) {
+        var i=0;
+        datosCabello[tipoCabello[key]] =[];
+        const valor= obj.map(persona=>{
+            if(persona.hair_color=== tipoCabello[key]){
+                datosCabello[tipoCabello[key]].push(persona.name);
+                i++;
+            }
+        });
+    });
+    console.log(datosCabello)
 }
 
 function SextoEjercicio(obj){
