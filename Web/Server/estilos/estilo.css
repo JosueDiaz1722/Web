@@ -1,0 +1,68 @@
+body{
+    /*background: lightskyblue*/
+    background-image: url(../imagenes/Blue-Background.jpeg);
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    font-family: Verdana;
+}
+h1{
+    font-family: Arial;
+    color: rgb(4, 9, 80);
+    text-align: center;
+}
+h2{
+    font-family: "Times New Roman";
+    color: dimgrey;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    font-family: Arial;
+    color: rgb(177, 173, 173);
+}
+h4{
+    font-family: Courier;
+    color: rgb(100%,50%,25%);
+    text-align: center;
+}
+/*partes del html # representa un id*/
+#cabecera{
+    background: rgba(24, 130, 190, 0.5);
+
+}
+#cuerpo{
+    background: darkgray;
+}
+
+#pie{
+    background: firebrick;
+}
+
+/* clases*/
+.resaltado{
+    font-family: sans-serif;
+    color: cyan;
+    text-decoration: none;
+}
+
+.justificado{
+    text-align: justify;
+}
+
+blockquote{
+    margin-bottom: 25px;
+    padding-top: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+    border-style: dotted;
+    border-color: blue;
+    color: blue;
+    background: #FFCC00;
+}
+
+table{
+    background-color: aliceblue;
+    text-align: center;
+    border: black;
+    
+}
