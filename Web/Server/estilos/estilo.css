@@ -1,24 +1,23 @@
 body{
     /*background: lightskyblue*/
-    background-image: url(../imagenes/Blue-Background.jpeg);
+    /*background-image: url(../imagenes/Blue-Background.jpeg);*/
     background-repeat: repeat-x;
     background-repeat: repeat-y;
     font-family: Verdana;
 }
 h1{
     font-family: Arial;
-    color: rgb(4, 9, 80);
-    text-align: center;
+    
+    
 }
 h2{
     font-family: "Times New Roman";
-    color: dimgrey;
+    color: rgb(161, 10, 10);
     text-align: center;
 }
 h3{
-    text-align: center;
     font-family: Arial;
-    color: rgb(177, 173, 173);
+    /*color: rgb(15, 23, 26);*/
 }
 h4{
     font-family: Courier;
@@ -57,7 +56,7 @@ blockquote{
     border-style: dotted;
     border-color: blue;
     color: blue;
-    background: #FFCC00;
+    background: rgb(255, 252, 58);
 }
 
 table{
@@ -65,4 +64,26 @@ table{
     text-align: center;
     border: black;
     
+}
+
+header{
+    background: black;
+    color: whitesmoke;
+}
+
+.color2{
+    background: #34495e;
+    color: #fff
+
+}
+.main{
+    background: #f2f2f2;
+}
+footer{
+    background: #16a085;
+    color: #f111;
+}
+
+aside{
+    background: #d46a06;
 }
