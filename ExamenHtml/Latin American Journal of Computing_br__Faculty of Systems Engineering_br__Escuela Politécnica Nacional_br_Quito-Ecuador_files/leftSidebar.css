@@ -1,0 +1,92 @@
+/**
+ * leftSidebar.css
+ *
+ * Copyright (c) 2003-2011 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * Site-wide shared elements for pages including a left-hand sidebar.
+ *
+ * $Id$
+ */
+
+/**
+ * Common HTML elements
+ */
+
+#headerTitle {
+	width: 100%;
+}
+
+#body {
+	vertical-align: top;
+	height: 100%;
+}
+
+#leftSidebar {
+	float: left;
+	width: 14%;
+	padding: 1em;
+	font-size: 0.65em;
+	height: 100%;
+	margin-left: 0%;
+	margin-right: 0%;
+	display: inline;
+	overflow: visible;
+	
+}
+
+
+
+#main {
+	float: right;
+	width: 63%;
+	margin-right: 10%;
+	overflow: hidden;
+}
+
+// Set main on non-IE browsers to have a 10% margin
+*html #main {
+	margin-right: 5%;
+}
+
+/**
+ * Other organizational elements
+ */
+
+#sidebarUser {
+/*	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+	padding-bottom: 0.15em;*/
+	padding-top: 0em;
+	margin-bottom: 12%;
+	margin-top: 20%;
+	
+}
+
+
+#sidebarUser span.blockTitle {
+	display: none;
+}
+
+
+#notification {
+/*	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #CCC;*/
+	
+	padding-bottom: 0.5em;
+	margin-bottom: 12%;
+}
+
+#sidebarFontSize {
+/*	border-bottom: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #CCC;*/
+	
+	padding-bottom: 0.5em;
+	margin-bottom: 12%;
+}

@@ -1,0 +1,36 @@
+#cuerpo{
+    background: beige;
+}
+
+.navbar-default {
+    background-color: lightblue;
+    border-color: #E7E7E7;
+}
+.header img {
+    float: left;
+    width: 100px;
+    height: 100px;
+  }
+  
+.header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+  }
+
+  .color2{
+    background: #ffffff;
+    color: black
+}
+
+aside{
+    background: #d46a06;
+}
+
+footer{
+    background: gray;
+    color: white;
+    text-align: center;
+    font-size: 20pt;
+
+}
