@@ -1,0 +1,47 @@
+<h1>Formulario de Creación</h1>
+<p>Crear nuevo libro</p>
+<form
+        action="/libros/crear"
+        method="post"
+>
+
+    <label for="nombreId">Nombre</label>
+    <input id="nombreId" name="nombre" type="text">
+    <br>
+    <br>
+
+    <label for="tipoId">Tipo</label>
+    <select name="tipo" id="tipoId">
+        <option value="Novela">Novela</option>
+        <option value="Literatura">Literatura</option>
+        <option value="Cientifico" selected>Científico</option>
+        <option value="Viaje">Viaje</option>
+        <option value="Biografia">Biografía</option>
+        <option value="Consulta">Consulta</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="edicionId">Edición</label>
+    <input id="edicionId" name="edicion" type="number" min="0" max="10" step="0.10">
+    <br>
+    <br>
+
+    <label for="fechaId">Fecha</label>
+    <input id="fechaId" name="fecha" type="date">
+    <br>
+    <br>
+
+    <label for="precioId">Precio</label>
+    <input id="precioId" name="precio" type="number" min="0" step="1">
+    <br>
+    <br>
+
+    <button type="reset">Limpiar</button>
+    <!--<button type="submit">Submit</button>-->
+
+    <a href="/libros/lista"><button type="button">Cancelar</button></a>
+
+    <button>Enviar informacion</button>
+
+</form>

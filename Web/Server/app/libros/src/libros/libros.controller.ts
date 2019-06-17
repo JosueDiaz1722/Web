@@ -26,6 +26,13 @@ export class LibrosController {
         res.render('libros/crear-libro')
     }
 
+    @Get('editarLibro')
+    editarLibro(
+        @Res() res
+    ) {
+        res.render('libros/editar-libro')
+    }
+
     @Post('crear')
     crearLibroPost(
         @Body() libro:Libro,
@@ -42,10 +49,11 @@ export class LibrosController {
     }
 
     @Post('editar')
-    actualizarLibro(
-        @Res() res)
-    {
-        res.redirect('/libros/editar');
+    actualizarLibro(@Res() res,
+                  @Body('id') id: number) {
+        this._librosService.buscarPorId(id);
+        
+        res.redirect('/libros/editarLibro');
     }
 
     @Post('eliminar')

@@ -1,3 +1,4 @@
+<!--
 <% const nombre = 'Daniel';  // codigo JS %>
 <%= nombre %>
 <% const objeto = {nombre:'Luis',edad:25}; %>
@@ -14,14 +15,14 @@
         <li> Valor: <%= valorActual %> </li>
     <% })%>
 </ol>
+-->
 
 <style>
     table,tr,td, th{
         border: solid black 1px
-    }
+    } 
 </style>
 
-<br>
 <h1>Libros</h1>
 <a href="/libros/crear">
     <button>Crear</button>
@@ -46,12 +47,10 @@
         <td> <%=libro.tipo%> </td>
         <td>
             <br>
-            <!--<form action="/libros/editar" method="post">-->
-                <a href="/libros/editar">
+                <form action="/libros/editar" method='post'>
                 <input id="id" name="id" type="number" value="<% libro.id %>" hidden>
                 <button>Editar</button>
-                </a>
-            <!--</form>-->
+                </form>
         </td>
         <td>
             <br>
