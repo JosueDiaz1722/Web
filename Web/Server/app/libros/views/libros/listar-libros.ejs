@@ -1,24 +1,65 @@
-<h1>Libros:</h1>
+<% const nombre = 'Daniel';  // codigo JS %>
+<%= nombre %>
+<% const objeto = {nombre:'Luis',edad:25}; %>
+<br>
+<%= objeto.edad %>
+<br>
+<% const arreglo = [1,2,3,4,5]; %>
+<% arreglo.forEach((valorActual)=>{ %>
+    <p> Numero: <%= valorActual %> </p>
+<% })%>
+
+<ol>
+    <% arreglo.forEach((valorActual)=>{ %>
+        <li> Valor: <%= valorActual %> </li>
+    <% })%>
+</ol>
+
+<style>
+    table,tr,td, th{
+        border: solid black 1px
+    }
+</style>
+
+<br>
+<h1>Libros</h1>
+<a href="/libros/crear">
+    <button>Crear</button>
+</a>
+<br>
+<br>
 <table>
     <tr>
         <th>Nombre</th>
         <th>Edicion</th>
-        <th>Fecha</th>
+        <th>Caduca</th>
         <th>Precio</th>
         <th>Tipo</th>
+        <th colspan="2">Acciones</th>
     </tr>
-    
-    <% arregloLibros.foreach((libro)=>{%>
+    <% arregloLibros.forEach((libro)=>{ %>
     <tr>
-        <td><%libro.nombre%></td>
-        <td><%libro.edicion%></td>
-        <td><%libro.fecha%></td>
-        <td><%libro.precio%></td>
-        <td><%libro.tipo%></td>
+        <td> <%=libro.nombre%> </td>
+        <td> <%=libro.edicion%> </td>
+        <td> <%=libro.fecha%> </td>
+        <td> <%=libro.precio%> </td>
+        <td> <%=libro.tipo%> </td>
         <td>
-            <button>Editar</button>
-            <button>Eliminar</button>
+            <br>
+            <!--<form action="/libros/editar" method="post">-->
+                <a href="/libros/editar">
+                <input id="id" name="id" type="number" value="<% libro.id %>" hidden>
+                <button>Editar</button>
+                </a>
+            <!--</form>-->
+        </td>
+        <td>
+            <br>
+            <form action="/libros/eliminar" method="post">
+                <input id="id" name="id" type="number" value="<% libro.id %>" hidden>
+                <button>Borrar</button>
+            </form>
         </td>
     </tr>
-    <%})%>
+    <% })%>
 </table>

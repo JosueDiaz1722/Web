@@ -1,18 +1,18 @@
-import{Module} from  '@nestjs/common';
-import{LibrosService} from './libros.service';
-import{LibrosController} from './libros.controller';
+import {Module} from "@nestjs/common";
+import {LibrosController} from "./libros.controller";
+import {LibrosService} from "./libros.service";
 
 @Module({
-    imports:[], //modulos
+    imports:[],  // Modulos
     controllers:[
         LibrosController
-    ], //controladores
+    ], // Controladores
     providers:[
         LibrosService
-    ], //servicios
-    exports:[] //servicios externes
+    ], // Servicios
+    exports:[
+        LibrosService
+    ] // Exportar Servicios
 })
-
-export class LibrosModule{
-
+export class LibrosModule {
 }
