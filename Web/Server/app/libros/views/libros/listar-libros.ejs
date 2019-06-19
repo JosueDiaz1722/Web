@@ -29,8 +29,19 @@
 </a>
 <br>
 <br>
+
+<input id="buscar" name="Buscar" type="text" value="">
+<label for="tipo"></label>
+    <select name="tipo" id="tipo" >
+        <option value="ID">ID</option>
+        <option value="Nombre">Nombre</option>
+    </select>
+<button>Buscar</button>
+<br>
+<br>
 <table>
     <tr>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Edicion</th>
         <th>Caduca</th>
@@ -40,6 +51,7 @@
     </tr>
     <% arregloLibros.forEach((libro)=>{ %>
     <tr>
+        <td> <%=libro.id%> </td>
         <td> <%=libro.nombre%> </td>
         <td> <%=libro.edicion%> </td>
         <td> <%=libro.fecha%> </td>
@@ -47,8 +59,8 @@
         <td> <%=libro.tipo%> </td>
         <td>
             <br>
-                <form action="/libros/editar" method='post'>
-                <input id="id" name="id" type="number" value="<% libro.id %>" hidden>
+                <form action="/libros/editarLibro/<%=libro.id%>" method='GET'>
+                <input id="id" name="id" type="number" value='<%=libro.id%>' hidden>
                 <button>Editar</button>
                 </form>
         </td>

@@ -49,8 +49,11 @@ export class LibrosService {
     }
 
     eliminarPorId(id: number):Libro[] {
+
+        console.log("El id es:"+id);
         const indice = this.bddLibros.findIndex(
             (libro) => {
+                
                 return libro.id === id
             }
         );

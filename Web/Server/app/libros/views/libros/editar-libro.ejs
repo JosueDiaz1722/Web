@@ -1,39 +1,40 @@
 <h1>Formulario de Actualización</h1>
 <p>Editar libro</p>
 <form
-        action="/libros/editar"
-        method="post"
+        action="/libros/editar/<%=libro.id%>"
+        method="POST"
 >
 
-    <label for="nombreId">Nombre</label>
-    <input id="nombreId" name="nombre" type="text">
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text" value="<%=libro.nombre%>">
     <br>
     <br>
 
-    <label for="tipoId">Tipo</label>
-    <select name="tipo" id="tipoId">
+    <label for="tipo">Tipo</label>
+    <select name="tipo" id="tipo" >
         <option value="Novela">Novela</option>
         <option value="Literatura">Literatura</option>
-        <option value="Cientifico" selected>Científico</option>
+        <option value="Cientifico">Científico</option>
         <option value="Viaje">Viaje</option>
         <option value="Biografia">Biografía</option>
         <option value="Consulta">Consulta</option>
     </select>
+    <script>document.getElementById('tipo').value="<%=libro.tipo%>";</script>
     <br>
     <br>
 
-    <label for="edicionId">Edición</label>
-    <input id="edicionId" name="edicion" type="number" min="0" max="10" step="0.10">
+    <label for="edicion">Edición</label>
+    <input id="edicion" name="edicion" type="number" min="0" max="10" step="0.10" value="<%=libro.edicion%>" >
     <br>
     <br>
 
-    <label for="fechaId">Fecha</label>
-    <input id="fechaId" name="fecha" type="date">
+    <label for="fecha">Fecha</label>
+    <input id="fecha" name="fecha" type="date" value="<%=libro.fecha%>" >
     <br>
     <br>
 
-    <label for="precioId">Precio</label>
-    <input id="precioId" name="precio" type="number" min="0" step="1">
+    <label for="precio">Precio</label>
+    <input id="precio" name="precio" type="number" min="0" step="1" value="<%=libro.precio%>">
     <br>
     <br>
 

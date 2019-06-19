@@ -1,6 +1,7 @@
-import {Controller, Get, Post, Res, Body} from "@nestjs/common";
+import {Controller, Get, Post, Res, Body, Param} from "@nestjs/common";
 import {LibrosService} from "./libros.service";
 import {Libro} from "./interface/libro";
+import { response } from "express";
 
 @Controller('/libros')
 export class LibrosController {
@@ -26,11 +27,17 @@ export class LibrosController {
         res.render('libros/crear-libro')
     }
 
-    @Get('editarLibro')
-    editarLibro(
-        @Res() res
+    @Get('editarLibro/:id')
+    actulizarLibro(
+        @Res() response,@Param('id') id: string
     ) {
-        res.render('libros/editar-libro')
+        const libroEncontrado = this._librosService.buscarPorId(+id);
+        response
+        .render(
+            'libros/editar-libro',{
+                libro: libroEncontrado
+            }
+        )
     }
 
     @Post('crear')
@@ -48,12 +55,15 @@ export class LibrosController {
 
     }
 
-    @Post('editar')
+    @Post('editar/:id')
     actualizarLibro(@Res() res,
-                  @Body('id') id: number) {
-        this._librosService.buscarPorId(id);
+                  @Param('id') id: string, 
+                  @Body() libro:Libro) {
+        console.log(libro)
+        libro.id=+id
         
-        res.redirect('/libros/editarLibro');
+        this._librosService.actualizar(libro,+id);
+        res.redirect('/libros/lista');
     }
 
     @Post('eliminar')
