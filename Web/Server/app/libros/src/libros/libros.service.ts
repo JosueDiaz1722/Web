@@ -40,14 +40,18 @@ export class LibrosService {
         );
     }
 
-    buscarPorNombre(nombre: string):Libro {
-        return this.bddLibros.find(
+    buscarPorNombre(nombre: string):Libro[] {
+        if(nombre!=='' && nombre!==null){
+            return this.bddLibros.filter(
             (libro) => {
                 return libro.nombre.toUpperCase().includes(nombre.toUpperCase());
             }
         );
+            console.log(nombre);
+    }else{
+            return this.bddLibros;
+        }
     }
-
     eliminarPorId(id: number):Libro[] {
 
         console.log("El id es:"+id);

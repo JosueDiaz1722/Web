@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Res, Body, Param} from "@nestjs/common";
+import {Controller, Get, Post, Res, Body, Param, Req} from "@nestjs/common";
 import {LibrosService} from "./libros.service";
 import {Libro} from "./interface/libro";
 import { response } from "express";
@@ -27,19 +27,6 @@ export class LibrosController {
         res.render('libros/crear-libro')
     }
 
-    @Get('editarLibro/:id')
-    actulizarLibro(
-        @Res() response,@Param('id') id: string
-    ) {
-        const libroEncontrado = this._librosService.buscarPorId(+id);
-        response
-        .render(
-            'libros/editar-libro',{
-                libro: libroEncontrado
-            }
-        )
-    }
-
     @Post('crear')
     crearLibroPost(
         @Body() libro:Libro,
@@ -47,29 +34,79 @@ export class LibrosController {
     ){
         libro.edicion = Number(libro.edicion);
         libro.precio = Number(libro.precio);
-        libro.fecha = new Date(libro.fecha);
+        const date = new Date(libro.fecha);
 
         this._librosService.crear(libro);
+        console.log(formatDate(libro.fecha) +"****"+ libro.fecha);
 
         res.redirect('/libros/lista');
 
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
     }
 
-    @Post('editar/:id')
-    actualizarLibro(@Res() res,
-                  @Param('id') id: string, 
-                  @Body() libro:Libro) {
-        console.log(libro)
-        libro.id=+id
-        
-        this._librosService.actualizar(libro,+id);
+    @Get('editar/:idLibro')
+     actualizarLibroVista(
+        @Res() response,
+        @Param('idLibro') idLibro: string,
+    ) {
+        // El "+" le transforma en numero a un string
+        // numerico
+        const libroEncontrado = this._librosService.buscarPorId(+idLibro);
+
+        response
+            .render(
+                'libros/editar-libro',
+                {
+                    libro: libroEncontrado
+                }
+            )
+    }
+
+    @Post('editar/:idLibro')
+    actualizarLibro(
+        @Res() res,
+        @Param('idLibro') idLibro:String,
+        @Body() libro: Libro
+        )
+    {
+        console.log(libro);
+        libro.id=+idLibro;
+        this._librosService.actualizar(libro,+idLibro);
         res.redirect('/libros/lista');
     }
+
 
     @Post('eliminar')
     eliminarLibro(@Res() res,
-                  @Body('id') id: number) {
-        this._librosService.eliminarPorId(id);
+                  @Body('id') id: string) {
+
+        this._librosService.eliminarPorId(Number(id));
         res.redirect('/libros/lista');
     }
+
+    @Post('buscar')
+    buscar(
+        @Res() res,
+        @Body('busqueda') busqueda:string
+    ){
+        const listaBusqueda:Libro[]=this._librosService.buscarPorNombre(busqueda);
+        console.log(listaBusqueda);
+        console.log(busqueda);
+        if(listaBusqueda!=null){
+            res.render('libros/listar-libros',{arregloLibros:listaBusqueda})
+        }else{
+        res.redirect('libros/lista');
+    }
+}
 }

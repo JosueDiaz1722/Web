@@ -2,39 +2,39 @@
 <p>Editar libro</p>
 <form
         action="/libros/editar/<%=libro.id%>"
-        method="POST"
+        method="post"
 >
 
-    <label for="nombre">Nombre</label>
-    <input id="nombre" name="nombre" type="text" value="<%=libro.nombre%>">
+    <label for="nombreId">Nombre</label>
+    <input id="nombreId" name="nombre" type="text" value="<%=libro.nombre%>">
     <br>
     <br>
 
-    <label for="tipo">Tipo</label>
-    <select name="tipo" id="tipo" >
+    <label for="tipoId">Tipo</label>
+    <select name="tipo" id="tipo" value="<%=libro.tipo%>">
         <option value="Novela">Novela</option>
         <option value="Literatura">Literatura</option>
-        <option value="Cientifico">Científico</option>
+        <option value="Cientifico"></option> 
         <option value="Viaje">Viaje</option>
         <option value="Biografia">Biografía</option>
         <option value="Consulta">Consulta</option>
     </select>
-    <script>document.getElementById('tipo').value="<%=libro.tipo%>";</script>
+    
     <br>
     <br>
 
-    <label for="edicion">Edición</label>
-    <input id="edicion" name="edicion" type="number" min="0" max="10" step="0.10" value="<%=libro.edicion%>" >
+    <label for="edicionId" >Edición</label>
+    <input id="edicionId"  value="<%=libro.edicion%>" name="edicion" type="number" min="0" max="10" step="0.10">
     <br>
     <br>
 
-    <label for="fecha">Fecha</label>
-    <input id="fecha" name="fecha" type="date" value="<%=libro.fecha%>" >
+    <label for="fechaId">Fecha</label>
+    <input id="fechaId" name="fecha" type="date"  value="<%=libro.fecha%>">
     <br>
     <br>
 
-    <label for="precio">Precio</label>
-    <input id="precio" name="precio" type="number" min="0" step="1" value="<%=libro.precio%>">
+    <label for="precioId">Precio</label>
+    <input id="precioId"  value="<%=libro.precio%>" name="precio" type="number" min="0" step="1">
     <br>
     <br>
 
