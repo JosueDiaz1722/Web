@@ -30,13 +30,37 @@
 <br>
 <br>
 
-<input id="buscar" name="Buscar" type="text" value="">
+<input id="buscar" name="Buscar" onkeyup="myFunction()" type="search" value="">
 <label for="tipo"></label>
     <select name="tipo" id="tipo" >
         <option value="ID">ID</option>
         <option value="Nombre">Nombre</option>
     </select>
 <button>Buscar</button>
+
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById('myInput');
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName('li');
+    
+      console.log(input)
+      // Loop through all list items, and hide those who don't match the search query
+      /*for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }*/   
+    }
+    </script>
+
 <br>
 <br>
 <table>
