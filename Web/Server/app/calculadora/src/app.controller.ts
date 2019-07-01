@@ -1,20 +1,16 @@
-import { Controller, Get, Headers,Res, Body, Post, Patch, Req } from '@nestjs/common';
+import { Controller, Get, Headers,Res, Body, Post, Patch, Req, Query,Put, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
 
-  @Get('/suma')
-  suma(@Headers() headers, @Res() res) {
+  @Put('/suma/:numeroDos')
+  suma(@Param('numeroDos') numeroDos: number, @Headers() headers, @Res() res) {
       
-      if(headers.numerouno!=null&&headers.numerodos!=null){
-        const resultado= Number( headers.numerouno)+Number(headers.numerodos);
+      if(headers.numerouno!=null&&numeroDos!=null){
+        const resultado= Number( headers.numerouno)+Number(numeroDos);
         return res.status(210).send('Suma: '+resultado);
       }else{
         return res.status(400).send({mensaje:'Error en los parametros',error:400});
@@ -22,15 +18,13 @@ export class AppController {
   }
 
   @Post('/resta')
-  resta( @Body() headers, @Res() res, @Req() req) {
+  resta( @Query('numerodos') numerodos, @Res() res, @Req() req) {
       
-      if(headers.numerouno!=null&&headers.numerodos!=null){
-        const cook=req.cookies;
-        const resultado= Number( headers.numerouno)-Number(headers.numerodos);
-        res.cookie('Resta:',
-        resultado.toString()
-        )
-        return res.status(403).send(cook);
+      console.log(numerodos);
+      console.log(req.cookies.cookie1)
+      if(numerodos!=null){
+        const resultado= Number( req.cookies.cookie1)-Number(numerodos);
+        return res.status(403).send('Resta: '+resultado);
       }else{
         return res.status(400).send({mensaje:'Error en los parametros',error:400});
       }
@@ -47,26 +41,37 @@ export class AppController {
   }
 
   @Get('/division')
-  division(@Headers() headers, @Body() body, @Res() res){
-    if(headers.numerouno!=null&&body.numerodos!=null){
-      const resultado= Number( headers.numerouno)/Number(body.numerodos);
+  division(@Req() req, @Res() res){
+    if(req.cookies.cookie1!=null&&req.cookies.cookie2!=null&&req.cookies.cookie2!=0){
+      const resultado= Number( req.cookies.cookie1)/Number(req.cookies.cookie2);
       return res.status(403).send('Division: '+resultado);
     }else{
       return res.status(400).send({mensaje:'Error en los parametros',error:400});
     }
   }
 
-  @Get('obtenerCookie')
+  @Get('')
   obtenerCookie(
     @Res() res,
     @Req() req,
   ){
     const cook=req.cookies;
-    console.log(cook);
     res.cookie('micook',
     new Date().toString()
-    )
-    console.log(cook);
+    );
+    res.cookie('numero',18);
+    res.cookie('segura',19,{signed: true});
+
+    const cookieSegura=req.signedCookies.segura;
+    console.log(req.signedCookies);
+
+
+    if(cookieSegura){
+      console.log("Cookie segura",cookieSegura);
+    }else{
+      console.log("Cookie no es segura");
+    }
+
     res.send(cook)
   }
 }
