@@ -22,11 +22,15 @@ export class AppController {
   }
 
   @Post('/resta')
-  resta( @Body() headers, @Res() res) {
+  resta( @Body() headers, @Res() res, @Req() req) {
       
       if(headers.numerouno!=null&&headers.numerodos!=null){
+        const cook=req.cookies;
         const resultado= Number( headers.numerouno)-Number(headers.numerodos);
-        return res.status(403).send('Resta: '+resultado);
+        res.cookie('Resta:',
+        resultado.toString()
+        )
+        return res.status(403).send(cook);
       }else{
         return res.status(400).send({mensaje:'Error en los parametros',error:400});
       }
