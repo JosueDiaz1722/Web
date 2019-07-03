@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carros</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0 minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AutoHouse</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Carro <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cliente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Vendedor</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+</head>
+<body>
+
+<div class="container">
+
+<br>
+<h1>Carros</h1>
+<a href="/carros/crear">
+    <button class="btn btn-primary mb-2">Crear</button>
+</a>
+<br>
+<br>
+
+<form action="/carros/buscar" method="post">
+    <input type="text" id="busquedaId" placeholder="Busqueda" name="busqueda">
+    <button type="submit" class="btn btn-success mb-2">Buscar</button>
+
+</form>
+    <br>
+    <br>
+    <div class="table-responsive">
+ 
+    </div>
+</div>
+<script type="javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

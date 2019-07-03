@@ -1,0 +1,45 @@
+<h1>Formulario de Actualización</h1>
+<p>Editar carro</p>
+<form
+        action="/carros/editar/<%=carro.id%>"
+        method="post"
+>
+
+    <label for="placaId">Placa</label>
+    <input id="placaId" name="placa" type="text" value="<%=carro.placa%>">
+    <br>
+    <br>
+
+    <label for="tipoId">Tipo</label>
+    <select name="tipo" id="tipo" value="<%=carro.tipo%>">
+        <option value="Pequeño">Pequeño</option>
+        <option value="Mediano">Mediano</option>
+        <option value="Grande">Grande</option> 
+    </select>
+    
+    <br>
+    <br>
+
+    <label for="modeloId" >Modelo</label>
+    <input id="modeloId"  value="<%=carro.modelo%>" name="modelo" type="text" >
+    <br>
+    <br>
+
+    <label for="añoId">Año</label>
+    <input id="añoId" name="año" type="number"  value="<%=carro.año%>">
+    <br>
+    <br>
+
+    <label for="precioId">Precio</label>
+    <input id="precioId"  value="<%=carro.precio%>" name="precio" type="number" min="0" step="0.10">
+    <br>
+    <br>
+
+    <button type="reset">Limpiar</button>
+    <!--<button type="submit">Submit</button>-->
+
+    <a href="/carros/lista"><button type="button">Cancelar</button></a>
+
+    <button>Enviar informacion</button>
+
+</form>
