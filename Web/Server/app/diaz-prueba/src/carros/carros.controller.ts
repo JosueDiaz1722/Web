@@ -28,6 +28,20 @@ export class CarrosController {
         res.render('carros/crear-carro')
     }
 
+    @Get('inicio')
+    inicio(
+        @Res() res
+    ) {
+        res.render('carros/inicio')
+    }
+
+    @Get('contactanos')
+    contactanos(
+        @Res() res
+    ) {
+        res.render('carros/contactanos')
+    }
+
     @Get('cliente')
     listarClientes(
         @Res() res

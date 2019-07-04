@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Carros</title>
+    <title>Inicio</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0 minimum-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
@@ -34,66 +34,27 @@
 
 </head>
 <body>
-
-<div class="container" style="border:1px solid aliceblue;">
-
-<br>
-<h1 class="col-md-12" align="center" style="background-color: aliceblue">Clientes</h1>
-<a href="/clientes/crear">
-    <button class="btn btn-primary mb-2">Crear</button>
-</a>
-<br>
-<br>
-
-<form action="/clientes/buscar" method="post">
-  <input type="text" id="busquedaId" placeholder="Busqueda" name="busqueda">
-  <button type="submit" class="btn btn-success mb-2">Buscar</button>
-
-</form>
-  <br>
-  <br>
-  <div class="table-responsive">
-      <table class="table table-striped table-hover table-sm table-active">
-          <thead>
-          <tr class="table-active">
-              <th>Cedula</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Fecha de Nacimiento</th>
-              <th>Direccion</th>
-          <th colspan="2">Acciones</th>
-  </tr>
-  </thead>
-  <% arregloClientes.forEach((cliente)=>{ %>
-  <tr>
-      <td> <%=cliente.cedula%> </td>
-      <td> <%=cliente.nombre%> </td>
-      <td> <%=cliente.apellido%> </td>
-      <td> <%=cliente.fechaNacimiento%> </td>
-      <td> <%=cliente.direccion%> </td>
-      <td>
-          <br>
-          <!--<form action="/libros/editar" method="post">-->
-              <a href="/clientes/editar/<%=cliente.id%>">
-              <input id="id" name="id" type="number" value="<% cliente.id %>" hidden>
-              <button class="btn btn-warning mb-2">Editar</button>
-              </a>
-          <!--</form>-->
-      </td>
-      <td>
-          <br>
-          <form action="/cliente/eliminar" method="post">
-              <input id="id" name="id" type="number" value="<%=cliente.id %>" hidden>
-              <button class="btn btn-danger mb-2">Borrar</button>
-          </form>
-      </td>
-  </tr>
-  <% })%>
-</table>
+  <div class="col-md-12" align= "center" style="background-color: aliceblue">
+    <h1>Bienvenido</h1>
+    <h2>AutoHouse</h2>
+  </div>  
+  <div class="col-md-12" ">
+      <p align= "justify" >
+          <blockquote style="background-color: aliceblue; ">
+              Concesionario Chevrolet con más de 40 años de experiencia y de existencia en el mercado ecuatoriano. Estamos comprometidos con nuestros clientes en la entrega de un producto de calidad internacional y servicio posventa 100% confiable.
+       
+              Concesionario Virtual con visión de valorar el tiempo de nuestros clientes por lo que estamos a la vanguardia tecnológica ofreciendo herramientas digitales para que sus necesidades sean atendidas con menor tiempo de respuesta.
+               
+              Asiste a nuestro showroom y dos puntos de servicio especializados en taller para mantenimiento preventivo y el mejor taller de colisiones.
+          </blockquote>
+        </p>  
+        <br>    
   </div>
-</div>
-<script type="javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="javascript" src="js/bootstrap.min.js"></script>
-
+  <div align= "center" class="col-md-12" style="border:1px solid aliceblue;">
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/h6zyp5t7_Wg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  
 </body>
 </html>
