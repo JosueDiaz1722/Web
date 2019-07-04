@@ -1,8 +1,8 @@
-export interface Cliente {
+export interface Vendedor {
     id?: number;
     cedula: number;
     nombre: string;
     apellido: string;
     fechaNacimiento: Date;
-    direccion: string;
+    tipo: 'Vendedor'|'Gerente';
 }

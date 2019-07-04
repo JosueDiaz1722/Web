@@ -1,6 +1,7 @@
 import {Module} from "@nestjs/common";
 import {CarrosController} from "./carros.controller";
 import {CarrosService} from "./carros.service";
+import {ClientesService} from "../clientes/clientes.service"
 
 @Module({
     imports:[],  // Modulos
@@ -8,10 +9,12 @@ import {CarrosService} from "./carros.service";
         CarrosController
     ], // Controladores
     providers:[
-        CarrosService
+        CarrosService,
+        ClientesService
     ], // Servicios
     exports:[
-        CarrosService
+        CarrosService,
+        ClientesService
     ] // Exportar Servicios
 })
 export class CarrosModule {

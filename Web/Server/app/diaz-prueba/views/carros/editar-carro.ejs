@@ -1,45 +1,80 @@
-<h1>Formulario de Actualización</h1>
-<p>Editar carro</p>
-<form
-        action="/carros/editar/<%=carro.id%>"
-        method="post"
->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Carros</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0 minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <label for="placaId">Placa</label>
-    <input id="placaId" name="placa" type="text" value="<%=carro.placa%>">
-    <br>
-    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AutoHouse</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/carros/lista">Carro <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/clientes/lista">Cliente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/vendedores/lista" tabindex="-1" aria-disabled="true">Vendedor</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-    <label for="tipoId">Tipo</label>
-    <select name="tipo" id="tipo" value="<%=carro.tipo%>">
-        <option value="Pequeño">Pequeño</option>
-        <option value="Mediano">Mediano</option>
-        <option value="Grande">Grande</option> 
-    </select>
+</head>
+<body>
+    <h1>Formulario de Actualización</h1>
+    <h2>Editar Carro</h2>
+    <form
+            action="/carros/editar/<%=carro.id%>"
+            method="post"
+    >
     
-    <br>
-    <br>
-
-    <label for="modeloId" >Modelo</label>
-    <input id="modeloId"  value="<%=carro.modelo%>" name="modelo" type="text" >
-    <br>
-    <br>
-
-    <label for="añoId">Año</label>
-    <input id="añoId" name="año" type="number"  value="<%=carro.año%>">
-    <br>
-    <br>
-
-    <label for="precioId">Precio</label>
-    <input id="precioId"  value="<%=carro.precio%>" name="precio" type="number" min="0" step="0.10">
-    <br>
-    <br>
-
-    <button type="reset">Limpiar</button>
-    <!--<button type="submit">Submit</button>-->
-
-    <a href="/carros/lista"><button type="button">Cancelar</button></a>
-
-    <button>Enviar informacion</button>
-
-</form>
+        <label for="placaId">Placa</label>
+        <input id="placaId" name="placa" type="text" value="<%=carro.placa%>">
+        <br>
+        <br>
+    
+        <label for="tipoId">Tipo</label>
+        <select name="tipo" id="tipo" value="<%=carro.tipo%>">
+            <option value="Pequeño">Pequeño</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Grande">Grande</option> 
+        </select>
+        
+        <br>
+        <br>
+    
+        <label for="modeloId" >Modelo</label>
+        <input id="modeloId"  value="<%=carro.modelo%>" name="modelo" type="text" >
+        <br>
+        <br>
+    
+        <label for="añoId">Año</label>
+        <input id="añoId" name="año" type="number"  value="<%=carro.año%>">
+        <br>
+        <br>
+    
+        <label for="precioId">Precio</label>
+        <input id="precioId"  value="<%=carro.precio%>" name="precio" type="number" min="0" step="0.10">
+        <br>
+        <br>
+    
+        <button type="reset"  class="btn btn-warning mb-2">Limpiar</button>
+        <!--<button type="submit">Submit</button>-->
+    
+        <a href="/carros/lista"><button class="btn btn-danger mb-2" type="button">Cancelar</button></a>
+    
+        <button class="btn btn-primary mb-2">Enviar informacion</button>
+    
+    </form>    
+</body>
+</html>

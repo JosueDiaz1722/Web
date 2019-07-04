@@ -28,67 +28,69 @@
       </nav>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
 <div class="container">
 
 <br>
-<h1>Carros</h1>
-<a href="/carros/crear">
+<h1>Vendedores</h1>
+<a href="/vendedores/crear">
     <button class="btn btn-primary mb-2">Crear</button>
 </a>
 <br>
 <br>
 
-<form action="/carros/buscar" method="post">
-    <input type="text" id="busquedaId" placeholder="Busqueda" name="busqueda">
-    <button type="submit" class="btn btn-success mb-2">Buscar</button>
+<form action="/vendedores/buscar" method="post">
+  <input type="text" id="busquedaId" placeholder="Busqueda" name="busqueda">
+  <button type="submit" class="btn btn-success mb-2">Buscar</button>
 
 </form>
-    <br>
-    <br>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover table-sm table-active">
-            <thead>
-            <tr class="table-active">
-                <th>Placa</th>
-                <th>Modelo</th>
-                <th>Año</th>
-                <th>Precio</th>
-                <th>Tipo</th>
-            <th colspan="2">Acciones</th>
-    </tr>
-    </thead>
-    <% arregloCarros.forEach((carro)=>{ %>
-    <tr>
-        <td> <%=carro.placa%> </td>
-        <td> <%=carro.modelo%> </td>
-        <td> <%=carro.año%> </td>
-        <td> <%=carro.precio%> </td>
-        <td> <%=carro.tipo%> </td>
-        <td>
-            <br>
-            <!--<form action="/libros/editar" method="post">-->
-                <a href="/carros/editar/<%=carro.id%>">
-                <input id="id" name="id" type="number" value="<% carro.id %>" hidden>
-                <button class="btn btn-warning mb-2">Editar</button>
-                </a>
-            <!--</form>-->
-        </td>
-        <td>
-            <br>
-            <form action="/carros/eliminar" method="post">
-                <input id="id" name="id" type="number" value="<%=carro.id %>" hidden>
-                <button class="btn btn-danger mb-2">Borrar</button>
-            </form>
-        </td>
-    </tr>
-    <% })%>
+  <br>
+  <br>
+  <div class="table-responsive">
+      <table class="table table-striped table-hover table-sm table-active">
+          <thead>
+          <tr class="table-active">
+              <th>Cedula</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Tipo</th>
+          <th colspan="2">Acciones</th>
+  </tr>
+  </thead>
+  <% arregloVendedores.forEach((vendedor)=>{ %>
+  <tr>
+      <td> <%=vendedor.cedula%> </td>
+      <td> <%=vendedor.nombre%> </td>
+      <td> <%=vendedor.apellido%> </td>
+      <td> <%=vendedor.fechaNacimiento%> </td>
+      <td> <%=vendedor.tipo%> </td>
+      <td>
+          <br>
+          <!--<form action="/libros/editar" method="post">-->
+              <a href="/vendedores/editar/<%=vendedor.id%>">
+              <input id="id" name="id" type="number" value="<% vendedor.id %>" hidden>
+              <button class="btn btn-warning mb-2">Editar</button>
+              </a>
+          <!--</form>-->
+      </td>
+      <td>
+          <br>
+          <form action="/vendedores/eliminar" method="post">
+              <input id="id" name="id" type="number" value="<%=vendedor.id %>" hidden>
+              <button class="btn btn-danger mb-2">Borrar</button>
+          </form>
+      </td>
+  </tr>
+  <% })%>
 </table>
-    </div>
+  </div>
 </div>
 <script type="javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="javascript" src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

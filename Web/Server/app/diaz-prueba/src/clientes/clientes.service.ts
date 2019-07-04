@@ -9,11 +9,11 @@ export class ClientesService {
 
     constructor(){
         const cliente = {
-            placa:'XX',
-            modelo:'4x4',
-            año: 2017,
-            precio:10000.00,
-            tipo:'Mediano'
+            cedula:'XX',
+            nombre:'Juan',
+            apellido: 'Mendez',
+            fechaNacimiento: '1992-07-12',
+            direccion:'XX'
         };
         this.listar(cliente);
     }
@@ -40,14 +40,14 @@ export class ClientesService {
         );
     }
 
-    buscarPorPlaca(placa: string):Cliente[] {
-        if(placa!=='' && placa!==null){
+    buscarPorCedula(cedula: string):Cliente[] {
+        if(cedula!=='' && cedula!==null){
             return this.bddClientes.filter(
             (cliente) => {
-                return cliente.placa.toUpperCase().includes(placa.toUpperCase());
+                return cliente.cedula.toUpperCase().includes(cedula.toUpperCase());
             }
         );
-            console.log(placa);
+            console.log(cedula);
     }else{
             return this.bddClientes;
         }

@@ -1,22 +1,25 @@
 import {Controller, Get, Post, Res, Body, Param, Req} from "@nestjs/common";
 import {ClientesService} from "./clientes.service";
 import {Cliente} from "./interface/cliente";
+import {CarrosService} from "../carros/carros.service";
 
 
 @Controller('/clientes')
 export class clientesController {
-
-    constructor(private readonly _clientesService: ClientesService) {
-
+    
+    
+    constructor(private readonly _clientesService: ClientesService,
+                private readonly _carrosService: CarrosService) {
+    
     }
 
     @Get('lista')
-    listarclientes(
+    listarClientes(
         @Res() res
     ) {
         const arreglo = this._clientesService.bddClientes;
         res.render('clientes/listar-clientes', {
-            arregloclientes: arreglo
+            arregloClientes: arreglo
         })
     }
 
@@ -27,11 +30,15 @@ export class clientesController {
         res.render('clientes/crear-cliente')
     }
 
-    @Get('cliente')
-    listaCliente(
+
+    @Get('carro')
+    listarCarros(
         @Res() res
     ) {
-        res.render('clientes/listar-clientes')
+        const arreglo = this._carrosService.bddCarros;
+        res.render('carros/listar-carros', {
+            arregloCarros: arreglo
+        })
     }
 
 
@@ -43,7 +50,7 @@ export class clientesController {
         cliente.cedula = cliente.cedula;
         cliente.nombre = cliente.nombre;
         cliente.apellido = cliente.apellido;
-        cliente.dirreccion = cliente.dirreccion;
+        cliente.direccion = cliente.direccion;
         const date = new Date(cliente.fechaNacimiento);
 
         this._clientesService.crear(cliente);
@@ -110,11 +117,11 @@ export class clientesController {
         @Res() res,
         @Body('busqueda') busqueda:string
     ){
-        const listaBusqueda:Cliente[]=this._clientesService.buscarPorPlaca(busqueda);
+        const listaBusqueda:Cliente[]=this._clientesService.buscarPorCedula(busqueda);
         console.log(listaBusqueda);
         console.log(busqueda);
         if(listaBusqueda!=null){
-            res.render('clientes/listar-clientes',{arregloclientes:listaBusqueda})
+            res.render('clientes/listar-clientes',{arregloClientes:listaBusqueda})
         }else{
         res.redirect('clientes/lista');
     }

@@ -1,12 +1,13 @@
 import {Controller, Get, Post, Res, Body, Param, Req} from "@nestjs/common";
 import {CarrosService} from "./carros.service";
 import {Carro} from "./interface/carro";
-
+import {ClientesService} from "../clientes/clientes.service"
 
 @Controller('/carros')
 export class CarrosController {
 
-    constructor(private readonly _carrosService: CarrosService) {
+    constructor(private readonly _carrosService: CarrosService,
+                private readonly _clientesService: ClientesService) {
 
     }
 
@@ -28,10 +29,13 @@ export class CarrosController {
     }
 
     @Get('cliente')
-    listaCliente(
+    listarClientes(
         @Res() res
     ) {
-        res.render('clientes/listar-clientes')
+        const arreglo = this._clientesService.bddClientes;
+        res.render('clientes/listar-clientes', {
+            arregloClientes: arreglo
+        })
     }
 
 
