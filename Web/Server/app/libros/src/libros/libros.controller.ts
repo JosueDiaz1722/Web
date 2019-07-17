@@ -90,13 +90,7 @@ export class LibrosController {
     }
 
 
-    @Post('eliminar')
-    eliminarLibro(@Res() res,
-                  @Body('id') id: string) {
-
-        this._librosService.eliminarPorId(Number(id));
-        res.redirect('/libros/lista');
-    }
+   
 
     @Post('buscar')
     buscar(
@@ -122,7 +116,7 @@ export class LibrosController {
     ) {
         const arregloLibros = await this._librosService.buscar();
 
-        res.render('libros/lista-libros', {
+        res.render('libros/listar-libros', {
             arregloLibros: arregloLibros
         })
     }
@@ -184,6 +178,14 @@ export class LibrosController {
             res.status(500);
             res.send({mensaje: 'Error', codigo: 500});
         }
+    }
+
+    @Post('eliminar')
+    eliminarLibro(@Res() res,
+                  @Body('id') id: string) {
+
+        this._librosService.eliminarPorId(Number(id));
+        res.redirect('/libros/lista');
     }
 
 }

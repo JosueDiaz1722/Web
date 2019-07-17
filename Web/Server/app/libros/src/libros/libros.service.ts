@@ -139,7 +139,7 @@ export class LibrosService {
         );
     }
 
-    buscarPorNombre(nombre: string):Libro {
+    buscarPorNombre(nombre: string):Promise<EntityBook> {
         return this.bddLibros.find(
             (libro) => {
                 return libro.nombre.toUpperCase().includes(nombre.toUpperCase());
@@ -147,14 +147,8 @@ export class LibrosService {
         );
     }
 
-    eliminarPorId(id: number):Libro[] {
-        const indice = this.bddLibros.findIndex(
-            (libro) => {
-                return libro.id === id
-            }
-        );
-        this.bddLibros.splice(indice,1);
-        return this.bddLibros;
+    async eliminarPorId(id: number):Promise<any>{
+        return await this._librosRepository.delete(id);
     }
 
     actualizar(libroActualizado: Libro, id:number):Libro[] {
