@@ -1,7 +1,8 @@
-import {Controller, Get, Post, Res, Body, Param, Req} from "@nestjs/common";
+import {Controller, Get, Post, Res, Body, Param, Req, Query} from "@nestjs/common";
 import {LibrosService} from "./libros.service";
 import {Libro} from "./interface/libro";
-import { response } from "express";
+import {validate} from "class-validator";
+import {LibrosCreateDto} from "./dto/libro.create.dto";
 
 @Controller('/libros')
 export class LibrosController {
@@ -10,12 +11,14 @@ export class LibrosController {
 
     }
 
+
+/*
     @Get('lista')
     listarLibros(
         @Res() res
     ) {
         const arreglo = this._librosService.bddLibros;
-        res.render('libros/listar-libros', {
+        res.render('libros/lista-libros', {
             arregloLibros: arreglo
         })
     }
@@ -98,15 +101,89 @@ export class LibrosController {
     @Post('buscar')
     buscar(
         @Res() res,
+        @Req() req,
         @Body('busqueda') busqueda:string
     ){
         const listaBusqueda:Libro[]=this._librosService.buscarPorNombre(busqueda);
         console.log(listaBusqueda);
         console.log(busqueda);
         if(listaBusqueda!=null){
-            res.render('libros/listar-libros',{arregloLibros:listaBusqueda})
+            res.render('libros/lista-libros',{arregloLibros:listaBusqueda})
         }else{
         res.redirect('libros/lista');
     }
 }
+*/
+
+
+    @Get('lista')
+    async listarLibros(
+        @Res() res
+    ) {
+        const arregloLibros = await this._librosService.buscar();
+
+        res.render('libros/lista-libros', {
+            arregloLibros: arregloLibros
+        })
+    }
+
+    @Get('crear')
+    crearLibro(
+        @Res() res,
+        @Query('mensaje') mensaje:string,
+    ) {
+
+        res.render(
+            'libros/crear-editar',{
+                mensaje: mensaje
+            }
+        )
+    }
+
+    @Post('crear')
+    async crearLibroPost(
+        @Body() libro: Libro,
+        @Res() res,
+    ) {
+        libro.edicion = Number(libro.edicion);
+        libro.precio = Number(libro.precio);
+        libro.fecha = libro.fecha ? new Date(libro.fecha) : undefined;
+
+
+        let libroAValidar = new LibrosCreateDto();
+
+        libroAValidar.nombre = libro.nombre;
+        libroAValidar.tipo = libro.tipo;
+        libroAValidar.fecha = libro.fecha;
+        libroAValidar.precio = libro.precio;
+        libroAValidar.edicion = libro.edicion;
+
+        try {
+
+            const errores = await validate(libroAValidar);
+            console.log(errores);
+            console.log(libroAValidar);
+            console.log(libro);
+            if (errores.length > 0) {
+
+                console.error(errores);
+                res.redirect('/libro/crear?mensaje=Tienes un error en el formulario');
+
+
+            } else {
+
+                const respuestaCrear = await this._librosService
+                    .crear(libro); // Promesa
+
+                console.log('RESPUESTA: ', respuestaCrear);
+
+                res.redirect('/libros/lista');
+            }
+        } catch (e) {
+            console.error(e);
+            res.status(500);
+            res.send({mensaje: 'Error', codigo: 500});
+        }
+    }
+
 }

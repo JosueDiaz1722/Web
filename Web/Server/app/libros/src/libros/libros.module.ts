@@ -1,9 +1,15 @@
 import {Module} from "@nestjs/common";
 import {LibrosController} from "./libros.controller";
 import {LibrosService} from "./libros.service";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import {EntityBook} from "../libros/entities/books.entity"
 
 @Module({
-    imports:[],  // Modulos
+    imports:[TypeOrmModule.forFeature(
+        [
+            EntityBook
+        ], 'default'
+    )],  // Modulos
     controllers:[
         LibrosController
     ], // Controladores
